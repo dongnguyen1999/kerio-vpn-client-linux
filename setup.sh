@@ -1,6 +1,12 @@
 #!/bin/bash
 export DEBIAN_FRONTEND=noninteractive
 
+# --- Set a fake hostname + domain to make Kerio happy ---
+echo "kerio-ci.local" > /etc/hostname
+hostname kerio-ci.local
+echo "127.0.0.1 kerio-ci.local localhost" >> /etc/hosts
+echo "search local" > /etc/resolv.conf
+
 # Set default timezone to UTC (or change to Asia/Ho_Chi_Minh if preferred)
 ln -fs /usr/share/zoneinfo/UTC /etc/localtime
 dpkg-reconfigure -f noninteractive tzdata
