@@ -1,11 +1,13 @@
 #!/bin/bash
 export DEBIAN_FRONTEND=noninteractive
 
-# --- Set a fake hostname + domain to make Kerio happy ---
-echo "kerio-ci.local" > /etc/hostname
-hostname kerio-ci.local
-echo "127.0.0.1 kerio-ci.local localhost" >> /etc/hosts
-echo "search local" >> /etc/resolv.conf
+# Set full hostname with domain
+echo "ci.kerio.local" > /etc/hostname
+hostname ci.kerio.local
+echo "127.0.0.1 ci.kerio.local ci" >> /etc/hosts
+
+# Optional: Force a search domain (may help inside some CI setups)
+echo "search kerio.local" > /etc/resolv.conf
 
 # --- Set timezone silently ---
 ln -fs /usr/share/zoneinfo/UTC /etc/localtime
