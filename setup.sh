@@ -8,6 +8,7 @@ echo "127.0.0.1 ci.kerio.local ci" >> /etc/hosts
 
 # Optional: Force a search domain (may help inside some CI setups)
 echo "search kerio.local" > /etc/resolv.conf
+echo "nameserver 8.8.8.8" >> /etc/resolv.conf
 
 # --- Set timezone silently ---
 ln -fs /usr/share/zoneinfo/UTC /etc/localtime
